@@ -12,9 +12,11 @@ import { useLazyQuery } from "@apollo/client";
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
 const Cart = () => {
-  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
-  const [state, dispatch] = useStoreContext();
+  const dispatch = useDispatch(); 
+  const state = useSelector(state => state);
+
+  const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
   useEffect(() => {
     async function getCart() {
