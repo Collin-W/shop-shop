@@ -1,5 +1,6 @@
 import React from 'react';
-import { StoreProvider } from "./utils/GlobalState"
+import store from "./utils/store"
+import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
   ApolloClient,
@@ -41,7 +42,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-        <StoreProvider>
+        <Provider store={store}>
           <Nav />
           <Switch>
             <Route exact path="/" component={Home} />
@@ -52,7 +53,7 @@ function App() {
             <Route component={NoMatch} />
             <Route exact path="/success" component={Success} />
           </Switch>
-          </StoreProvider>
+          </Provider>
         </div>
       </Router>
     </ApolloProvider>
