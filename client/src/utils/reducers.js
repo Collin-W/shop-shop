@@ -10,7 +10,13 @@ import {
   TOGGLE_CART
 } from "./actions";
 
-import { useReducer } from 'react';
+const reduxState = {
+  products: [],
+  cart: [],
+  cartOpen: false,
+  categories: [],
+  currentCategory: ''
+};
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -90,6 +96,4 @@ export const reducer = (state, action) => {
   }
 };
 
-export function useProductReducer(initialState) {
-    return useReducer(reducer, initialState);
-  }
+export const reducer = (state = reduxState, action) => {}
